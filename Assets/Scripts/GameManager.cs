@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    int turnCount;
     public GameObject naught;
     public GameObject cross;
     // O is odd, X is even
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
     public void SquareClicked(GameObject square)
     {
+        turnCount += 1;
         // Get square's id
         int squareId = square.GetComponent<ClickableSquare>().squareId;
 
@@ -78,6 +80,11 @@ public class GameManager : MonoBehaviour
 
     void CheckWinner()
     {
+        if (turnCount >= 9)
+        {
+            winText.text = "DRAW";
+            ShowEndUI();
+        }
         // Middle Square options
         if (squares[4] == player)
         {
@@ -144,7 +151,6 @@ public class GameManager : MonoBehaviour
                 winText.text = "Player 2 wins!";
             }
 
-            isGameRunning = !isGameRunning;
             ShowEndUI();
         }
     }
@@ -153,7 +159,6 @@ public class GameManager : MonoBehaviour
     {
         // Activate the UI
         endUI.SetActive(true);
-
-
+        isGameRunning = !isGameRunning;
     }
 }
