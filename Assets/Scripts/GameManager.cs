@@ -136,13 +136,11 @@ public class GameManager : MonoBehaviour
         if (turnCount >= 9)
         {
             winText.text = "DRAW";
-            ShowEndUI();
         }
 
         // Do the win things
         if (gameWinner != 0)
         {
-            // Set win text (not yet)
             if (gameWinner == 1)
             {
                 winText.text = "Player 1 wins!";
@@ -155,6 +153,8 @@ public class GameManager : MonoBehaviour
             ShowEndUI();
         }
     }
+
+    // Set win text (not yet)
 
     void ShowEndUI()
     {
