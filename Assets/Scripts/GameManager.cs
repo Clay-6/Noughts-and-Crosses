@@ -80,11 +80,7 @@ public class GameManager : MonoBehaviour
 
     void CheckWinner()
     {
-        if (turnCount >= 9)
-        {
-            winText.text = "DRAW";
-            ShowEndUI();
-        }
+
         // Middle Square options
         if (squares[4] == player)
         {
@@ -136,6 +132,11 @@ public class GameManager : MonoBehaviour
             {
                 gameWinner = player;
             }
+        }
+        if (turnCount >= 9)
+        {
+            winText.text = "DRAW";
+            ShowEndUI();
         }
 
         // Do the win things
